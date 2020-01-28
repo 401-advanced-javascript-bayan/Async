@@ -8,7 +8,8 @@ let file = `${__dirname}/data/person.json`;  //we  cant use relative path here
  /////////////////////// read file  //////////////////
 let readFilepromisify = util.promisify(fs.readFile);  //its allow you to use promies
 
-readFilepromisify(file)    
+readFilepromisify(file) 
+
     .then(data =>  {
         console.log(' promisify : ',JSON.parse(data.toString())) // our json an object we used parse
         return JSON.parse(data.toString());
@@ -20,6 +21,7 @@ readFilepromisify(file)
 
 /////////////////////// write file /////////////////
 let writeFilepromisify = util.promisify(fs.writeFile);
+
 
 const writeFile = (file,data) =>
 {
