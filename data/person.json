@@ -1,4 +1,7 @@
-{"firstName":"bayan ","lastName":"mohmmd",
+{"firstName":"bayan ",
+    "lastName":"mohmmd",
     "hair":{"type":"strit","color":"brown"},
-    "favoriteFoods":["pizza","shawerma","salad"],"married":false,"kids":0}
+    "favoriteFoods":["pizza","shawerma","salad"],
+    "married":false,
+    "kids":0}
     
