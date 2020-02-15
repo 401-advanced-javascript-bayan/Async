@@ -1,37 +1,29 @@
-'use strict';
-const fs = require('fs');
-const util = require('util');
+'use strict' ;
 
-const reader = ('./lib/reader.js');
 
-let file = `${__dirname}/data/person.json`;  //we  cant use relative path here
- /////////////////////// read file  //////////////////
-let readFilepromisify = util.promisify(fs.readFile);  //its allow you to use promies
+const fs = require('fs') ;
+const util = require('util') ;
 
-readFilepromisify(file) 
 
-    .then(data =>  {
-        console.log(' promisify : ',JSON.parse(data.toString())) // our json an object we used parse
-        return JSON.parse(data.toString());
+
+/////////////////////// read file /////////////////
+const readFile = util.promisify(fs.readFile) ;  //its allow you to use promies
+const readerFuncPromise = (file) => {
+  return readFile(file)
+    .then( (data) => {
+      return data ;
     })
-.then(data => writeFile( file, data))
-.catch(error => console.error('error, promise',error))
-// let pro = process.argv;
-// console.log('Process.argv', pro)
+    .catch(error => error);
+};
+
+
 
 /////////////////////// write file /////////////////
-let writeFilepromisify = util.promisify(fs.writeFile);
+const writeFile = util.promisify(fs.writeFile) ;
+const writerFuncPromise = (file , data) => {
+  return writeFile(file , data);
+};
 
 
-const writeFile = (file,data) =>
-{
-    console.log('before write  : ', data);
-    data.firstName = 'bayan ';
-    data.hair.color ='brown';                 //// from person.json
-    data.kids=0;
-    console.log('after update  : ', data);
-    let newData = JSON.stringify(data);
-    writeFilepromisify(file,newData)
-}
 
-module.exports={readFilepromisify,writeFilepromisify} ;
+module.exports = { readerFuncPromise ,writerFuncPromise };

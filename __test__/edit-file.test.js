@@ -1,5 +1,5 @@
 'use strict';
-const editor = require('..//edit-file') ;
+const editor = require('../edit-file.js') ;
 const path = require('path');   //my path
 describe('file modules' , () => {
 
